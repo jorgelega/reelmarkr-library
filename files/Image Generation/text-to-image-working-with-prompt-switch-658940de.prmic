@@ -1,0 +1,573 @@
+{
+  "format": "reelmarkr.portable.canvas",
+  "kind": "prmic",
+  "version": 1,
+  "app": "ReelMarkr Immersion Canvas",
+  "created": "2026-06-21T17:51:41Z",
+  "anchor_x": -1529.6398745599997,
+  "anchor_y": 1096.5153190400001,
+  "items": [
+    {
+      "kind": "imagegen",
+      "rec": {
+        "node_type": "imagegen.prompt_merge",
+        "node_id": "imagegen.prompt_merge/42b65533e2cf",
+        "inputs": [
+          {
+            "name": "in_0",
+            "type": "string"
+          },
+          {
+            "name": "in_1",
+            "type": "string"
+          },
+          {
+            "name": "in_2",
+            "type": "string"
+          },
+          {
+            "name": "in_3",
+            "type": "string"
+          },
+          {
+            "name": "in_4",
+            "type": "string"
+          },
+          {
+            "name": "in_5",
+            "type": "string"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "text",
+            "type": "string"
+          }
+        ],
+        "collapsed": false,
+        "input_count": 6,
+        "separator": "comma",
+        "x": -290.0,
+        "y": 1578.0,
+        "w": 484.0,
+        "h": 215.0,
+        "kind": "imagegen.prompt_merge",
+        "type": "imagegen",
+        "wires": [
+          {
+            "src_socket": "text",
+            "dst_node_id": "imagegen.generate/b77f38f536e6",
+            "dst_socket": "prompt"
+          }
+        ]
+      },
+      "scene_x": -290.0,
+      "scene_y": 1578.0
+    },
+    {
+      "kind": "imagegen",
+      "rec": {
+        "node_type": "imagegen.model",
+        "node_id": "imagegen.model/d14983fdf4ec",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "model",
+            "type": "model_id"
+          }
+        ],
+        "collapsed": false,
+        "model_id": "black-forest-labs/FLUX.2-klein-4B",
+        "x": -1075.0,
+        "y": 2246.0,
+        "w": 756.0,
+        "h": 161.0,
+        "kind": "imagegen.model",
+        "type": "imagegen",
+        "wires": [
+          {
+            "src_socket": "model",
+            "dst_node_id": "imagegen.generate/b77f38f536e6",
+            "dst_socket": "model"
+          }
+        ]
+      },
+      "scene_x": -1075.0,
+      "scene_y": 2246.0
+    },
+    {
+      "kind": "imagegen",
+      "rec": {
+        "node_type": "imagegen.seed_switch",
+        "node_id": "imagegen.seed_switch/31a239cc63e3",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "seed",
+            "type": "seed"
+          }
+        ],
+        "collapsed": false,
+        "mode": "same",
+        "seeds": [
+          -1,
+          -1
+        ],
+        "same_seed": 2952,
+        "x": -388.6592819200002,
+        "y": 2898.422661120001,
+        "w": 290.0,
+        "h": 150.0,
+        "kind": "imagegen.seed_switch",
+        "type": "imagegen",
+        "wires": [
+          {
+            "src_socket": "seed",
+            "dst_node_id": "imagegen.generate/b77f38f536e6",
+            "dst_socket": "seed"
+          }
+        ]
+      },
+      "scene_x": -388.6592819200002,
+      "scene_y": 2898.422661120001
+    },
+    {
+      "kind": "imagegen",
+      "rec": {
+        "node_type": "imagegen.size",
+        "node_id": "imagegen.size/dd576c43a0fc",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "params",
+            "type": "gen_params"
+          }
+        ],
+        "collapsed": false,
+        "params": {
+          "width": 1024,
+          "height": 1024,
+          "steps": 5,
+          "cfg": 7.0,
+          "seed": -1,
+          "n": 10,
+          "scheduler": "dpmpp_2m_karras"
+        },
+        "x": -662.4516505600002,
+        "y": 2449.969643520001,
+        "w": 380.0,
+        "h": 400.0,
+        "kind": "imagegen.size",
+        "type": "imagegen",
+        "wires": [
+          {
+            "src_socket": "params",
+            "dst_node_id": "imagegen.generate/b77f38f536e6",
+            "dst_socket": "params"
+          }
+        ]
+      },
+      "scene_x": -662.4516505600002,
+      "scene_y": 2449.969643520001
+    },
+    {
+      "kind": "imagegen",
+      "rec": {
+        "node_type": "imagegen.prompt",
+        "node_id": "imagegen.prompt/b41cbdd17050",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "text",
+            "type": "string"
+          }
+        ],
+        "collapsed": false,
+        "text": "In the style of a vintage photograph",
+        "autogrow_disabled": false,
+        "x": -661.887744,
+        "y": 1954.9853388800009,
+        "w": 320.0,
+        "h": 200.0,
+        "kind": "imagegen.prompt",
+        "type": "imagegen",
+        "wires": [
+          {
+            "src_socket": "text",
+            "dst_node_id": "imagegen.prompt_merge/42b65533e2cf",
+            "dst_socket": "in_4"
+          }
+        ]
+      },
+      "scene_x": -661.887744,
+      "scene_y": 1954.9853388800009
+    },
+    {
+      "kind": "imagegen",
+      "rec": {
+        "node_type": "imagegen.generate",
+        "node_id": "imagegen.generate/b77f38f536e6",
+        "inputs": [
+          {
+            "name": "prompt",
+            "type": "string"
+          },
+          {
+            "name": "negative",
+            "type": "string"
+          },
+          {
+            "name": "model",
+            "type": "model_id"
+          },
+          {
+            "name": "params",
+            "type": "gen_params"
+          },
+          {
+            "name": "seed",
+            "type": "seed"
+          },
+          {
+            "name": "model_ref",
+            "type": "model_ref"
+          },
+          {
+            "name": "clip_ref",
+            "type": "clip_ref"
+          },
+          {
+            "name": "vae_ref",
+            "type": "vae_ref"
+          },
+          {
+            "name": "reference",
+            "type": "reference_image"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "image",
+            "type": "image_path"
+          }
+        ],
+        "collapsed": false,
+        "last_image_path": "ImageGen/local_black-forest-labs_FLUX.2-klein-4B_cfa2a02e63_2952.png",
+        "use_api": false,
+        "x": 443.7324595200002,
+        "y": 1944.8699289600008,
+        "w": 520.0,
+        "h": 620.0,
+        "kind": "imagegen.generate",
+        "type": "imagegen",
+        "wires": [
+          {
+            "src_socket": "image",
+            "dst_node_id": "imagegen.contact_sheet/a31da65858ad",
+            "dst_socket": "generator"
+          }
+        ]
+      },
+      "scene_x": 443.7324595200002,
+      "scene_y": 1944.8699289600008
+    },
+    {
+      "kind": "imagegen",
+      "rec": {
+        "node_type": "imagegen.prompt",
+        "node_id": "imagegen.prompt/6ed6595c2474",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "text",
+            "type": "string"
+          }
+        ],
+        "collapsed": false,
+        "text": "On a night day in a small Island a",
+        "autogrow_disabled": false,
+        "x": -1013.5287584000001,
+        "y": 1096.5153190400001,
+        "w": 320.0,
+        "h": 200.0,
+        "kind": "imagegen.prompt",
+        "type": "imagegen",
+        "wires": [
+          {
+            "src_socket": "text",
+            "dst_node_id": "imagegen.prompt_merge/42b65533e2cf",
+            "dst_socket": "in_0"
+          }
+        ]
+      },
+      "scene_x": -1013.5287584000001,
+      "scene_y": 1096.5153190400001
+    },
+    {
+      "kind": "imagegen",
+      "rec": {
+        "node_type": "imagegen.negative_prompt",
+        "node_id": "imagegen.negative_prompt/c341fbeb5718",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "text",
+            "type": "string"
+          }
+        ],
+        "collapsed": false,
+        "text": "Human, Man, woman, person, moons, multiple moons, ",
+        "autogrow_disabled": false,
+        "x": -176.95999999999998,
+        "y": 1827.8400000000004,
+        "w": 320.0,
+        "h": 200.0,
+        "kind": "imagegen.negative_prompt",
+        "type": "imagegen",
+        "wires": [
+          {
+            "src_socket": "text",
+            "dst_node_id": "imagegen.generate/b77f38f536e6",
+            "dst_socket": "negative"
+          }
+        ]
+      },
+      "scene_x": -176.95999999999998,
+      "scene_y": 1827.8400000000004
+    },
+    {
+      "kind": "imagegen",
+      "rec": {
+        "node_type": "imagegen.prompt",
+        "node_id": "imagegen.prompt/11b9688ad8af",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "text",
+            "type": "string"
+          }
+        ],
+        "collapsed": false,
+        "text": "Sit in the middle wearing ",
+        "autogrow_disabled": false,
+        "x": -1526.5480294399997,
+        "y": 1677.4090547199996,
+        "w": 320.0,
+        "h": 200.0,
+        "kind": "imagegen.prompt",
+        "type": "imagegen",
+        "wires": [
+          {
+            "src_socket": "text",
+            "dst_node_id": "imagegen.prompt_merge/42b65533e2cf",
+            "dst_socket": "in_2"
+          }
+        ]
+      },
+      "scene_x": -1526.5480294399997,
+      "scene_y": 1677.4090547199996
+    },
+    {
+      "kind": "imagegen",
+      "rec": {
+        "node_type": "imagegen.prompt",
+        "node_id": "imagegen.prompt/0eb3818d1180",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "text",
+            "type": "string"
+          }
+        ],
+        "collapsed": false,
+        "text": "Blue Frog with white spots\nBlack and white cat\nShiba inu\nlizard\nCrab with claws\nSnail side view\nSnake\nSquid with long tentacles\nRabbit\nFox side view",
+        "autogrow_disabled": false,
+        "x": -1518.0,
+        "y": 1393.0,
+        "w": 320.0,
+        "h": 265.0,
+        "kind": "imagegen.prompt",
+        "type": "imagegen",
+        "wires": [
+          {
+            "src_socket": "text",
+            "dst_node_id": "imagegen.prompt_switch/9ce1c89b1184",
+            "dst_socket": "in_0"
+          }
+        ]
+      },
+      "scene_x": -1518.0,
+      "scene_y": 1393.0
+    },
+    {
+      "kind": "imagegen",
+      "rec": {
+        "node_type": "imagegen.contact_sheet",
+        "node_id": "imagegen.contact_sheet/a31da65858ad",
+        "inputs": [
+          {
+            "name": "generator",
+            "type": "image_path"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "set",
+            "type": "image_path"
+          }
+        ],
+        "collapsed": false,
+        "thumb_size": 248,
+        "output_index": 0,
+        "x": 1186.0,
+        "y": 1615.0,
+        "w": 782.0,
+        "h": 766.0,
+        "kind": "imagegen.contact_sheet",
+        "type": "imagegen"
+      },
+      "scene_x": 1186.0,
+      "scene_y": 1615.0
+    },
+    {
+      "kind": "imagegen",
+      "rec": {
+        "node_type": "imagegen.prompt",
+        "node_id": "imagegen.prompt/37926d67f909",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "text",
+            "type": "string"
+          }
+        ],
+        "collapsed": false,
+        "text": "Golden crown",
+        "autogrow_disabled": false,
+        "x": -1529.6398745599997,
+        "y": 1938.0733030399997,
+        "w": 320.0,
+        "h": 200.0,
+        "kind": "imagegen.prompt",
+        "type": "imagegen",
+        "wires": [
+          {
+            "src_socket": "text",
+            "dst_node_id": "imagegen.prompt_merge/42b65533e2cf",
+            "dst_socket": "in_3"
+          }
+        ]
+      },
+      "scene_x": -1529.6398745599997,
+      "scene_y": 1938.0733030399997
+    },
+    {
+      "kind": "imagegen",
+      "rec": {
+        "node_type": "imagegen.prompt_switch",
+        "node_id": "imagegen.prompt_switch/9ce1c89b1184",
+        "inputs": [
+          {
+            "name": "in_0",
+            "type": "string"
+          },
+          {
+            "name": "in_1",
+            "type": "string"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "text",
+            "type": "string"
+          }
+        ],
+        "collapsed": false,
+        "input_count": 2,
+        "split": "line",
+        "x": -1032.4875903085717,
+        "y": 1381.829735405715,
+        "w": 293.0,
+        "h": 291.0,
+        "kind": "imagegen.prompt_switch",
+        "type": "imagegen",
+        "wires": [
+          {
+            "src_socket": "text",
+            "dst_node_id": "imagegen.prompt_merge/42b65533e2cf",
+            "dst_socket": "in_1"
+          }
+        ]
+      },
+      "scene_x": -1032.4875903085717,
+      "scene_y": 1381.829735405715
+    },
+    {
+      "kind": "drawing",
+      "rec": {
+        "kind": "sticky",
+        "z": 50000.02,
+        "origin_x": 0.0,
+        "origin_y": 0.0,
+        "scale": 1.0,
+        "rotation": 0.0,
+        "scene_x": -387.916127232,
+        "scene_y": 1203.4784126975999,
+        "text": "Prompt switch splits the input prompt into iterations so that each generation changes the result.",
+        "color": "#c1c1c1",
+        "bg_color": "#392e44",
+        "font_pt": 14.0,
+        "font_family": "Segoe UI",
+        "font_bold": false,
+        "font_italic": false,
+        "box_w": 365.2066422784,
+        "box_h": 127.29051504640006,
+        "_tpl_src_nid": "bfa5c66e-36c4-49e6-b05a-f04819b1ec24"
+      }
+    },
+    {
+      "kind": "diagram_connector",
+      "data": {
+        "type": "diagram_connector",
+        "endpoints": [
+          {
+            "kind": "snap",
+            "snap_nid": "bfa5c66e-36c4-49e6-b05a-f04819b1ec24",
+            "side": "bottom",
+            "t": 0.5119333015809552,
+            "x": -200.9069518848,
+            "y": 1332.768927744
+          },
+          {
+            "kind": "snap",
+            "snap_nid": "ac6eafb0-51c0-4f18-8a5b-d4dde9683934",
+            "side": "right",
+            "t": 0.5711609596861374,
+            "x": -722.4875903085717,
+            "y": 1550.4570473037097
+          }
+        ],
+        "markers": [
+          "circle",
+          "arrow"
+        ],
+        "line_style": "smooth",
+        "dash_style": "dotted_forward",
+        "stroke_color": "#838383",
+        "stroke_width": 1.0,
+        "mid_text": "",
+        "mid_text_color": "#e5e5e5",
+        "mid_font_pt": 11.0,
+        "mid_font_family": "Segoe UI",
+        "mid_font_bold": false,
+        "mid_font_italic": false
+      },
+      "scene_x": -722.4875903085717,
+      "scene_y": 1332.768927744
+    }
+  ],
+  "id": "658940def7ad4f62b0b30a452bff6454",
+  "title": "Text to Image - Working with Prompt Switch",
+  "description": "Prompt Switch is a node that can split up a prompt into iterations. Change The Seed Switch to get more variations.",
+  "strip_paths": true
+}
