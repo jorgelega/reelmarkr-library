@@ -1,0 +1,473 @@
+{
+  "format": "reelmarkr.portable.canvas",
+  "kind": "prmic",
+  "version": 1,
+  "app": "ReelMarkr Immersion Canvas",
+  "created": "2026-06-21T00:24:17Z",
+  "anchor_x": -1413.0873025709197,
+  "anchor_y": -504.0,
+  "items": [
+    {
+      "kind": "imagegen",
+      "rec": {
+        "node_type": "imagegen.prompt",
+        "node_id": "imagegen.prompt/ca75808e7f87",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "text",
+            "type": "string"
+          }
+        ],
+        "collapsed": false,
+        "text": "A rubber duck with a top hat is scared in the middle of the ocean. is moving so fast getting away from the shark leaving a large splash behind. There is a shark with its mouth open about to swallow the ducky, the shark is 4 times the size of the ducky only part that is visible is its mouth open emerging from the ocean. Beach is visible in the background with palm trees. 3D Logo that reads \"GO DUCKY\" in a metallic material,The logo is floating behind the duck. photographic image, Golden hour, key light, Logo has high micro details and texture.",
+        "autogrow_disabled": false,
+        "x": -533.0,
+        "y": -504.0,
+        "w": 320.0,
+        "h": 281.0,
+        "kind": "imagegen.prompt",
+        "type": "imagegen",
+        "wires": [
+          {
+            "src_socket": "text",
+            "dst_node_id": "imagegen.generate/c65a2c52dde0",
+            "dst_socket": "prompt"
+          }
+        ]
+      },
+      "scene_x": -533.0,
+      "scene_y": -504.0
+    },
+    {
+      "kind": "imagegen",
+      "rec": {
+        "node_type": "imagegen.contact_sheet",
+        "node_id": "imagegen.contact_sheet/89ff5b76e052",
+        "inputs": [
+          {
+            "name": "generator",
+            "type": "image_path"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "set",
+            "type": "image_path"
+          }
+        ],
+        "collapsed": false,
+        "thumb_size": 283,
+        "output_index": 0,
+        "x": 831.0,
+        "y": -41.0,
+        "w": 554.0,
+        "h": 636.0,
+        "kind": "imagegen.contact_sheet",
+        "type": "imagegen"
+      },
+      "scene_x": 831.0,
+      "scene_y": -41.0
+    },
+    {
+      "kind": "imagegen",
+      "rec": {
+        "node_type": "imagegen.generate",
+        "node_id": "imagegen.generate/c65a2c52dde0",
+        "inputs": [
+          {
+            "name": "prompt",
+            "type": "string"
+          },
+          {
+            "name": "negative",
+            "type": "string"
+          },
+          {
+            "name": "model",
+            "type": "model_id"
+          },
+          {
+            "name": "params",
+            "type": "gen_params"
+          },
+          {
+            "name": "seed",
+            "type": "seed"
+          },
+          {
+            "name": "model_ref",
+            "type": "model_ref"
+          },
+          {
+            "name": "clip_ref",
+            "type": "clip_ref"
+          },
+          {
+            "name": "vae_ref",
+            "type": "vae_ref"
+          },
+          {
+            "name": "reference",
+            "type": "reference_image"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "image",
+            "type": "image_path"
+          }
+        ],
+        "collapsed": false,
+        "last_image_path": "~\\AppData\\Local\\ReelMarkr\\ReelMarkr_data\\ImmersionCanvas\\ImageGen\\.cache\\33\\3347b7871fe43f38a596e21da5b2e5690fbd9101bc316fbb9c7f793d4d3a9f44.png",
+        "use_api": false,
+        "x": 124.0,
+        "y": -143.0,
+        "w": 520.0,
+        "h": 620.0,
+        "kind": "imagegen.generate",
+        "type": "imagegen",
+        "wires": [
+          {
+            "src_socket": "image",
+            "dst_node_id": "imagegen.contact_sheet/89ff5b76e052",
+            "dst_socket": "generator"
+          }
+        ]
+      },
+      "scene_x": 124.0,
+      "scene_y": -143.0
+    },
+    {
+      "kind": "imagegen",
+      "rec": {
+        "node_type": "imagegen.model",
+        "node_id": "imagegen.model/1b353197234d",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "model",
+            "type": "model_id"
+          }
+        ],
+        "collapsed": false,
+        "model_id": "black-forest-labs/FLUX.2-klein-4B",
+        "x": -995.0,
+        "y": 37.0,
+        "w": 756.0,
+        "h": 161.0,
+        "kind": "imagegen.model",
+        "type": "imagegen",
+        "wires": [
+          {
+            "src_socket": "model",
+            "dst_node_id": "imagegen.generate/c65a2c52dde0",
+            "dst_socket": "model"
+          }
+        ]
+      },
+      "scene_x": -995.0,
+      "scene_y": 37.0
+    },
+    {
+      "kind": "imagegen",
+      "rec": {
+        "node_type": "imagegen.seed_switch",
+        "node_id": "imagegen.seed_switch/39e9de6b73d8",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "seed",
+            "type": "seed"
+          }
+        ],
+        "collapsed": false,
+        "mode": "same",
+        "seeds": [
+          -1,
+          -1
+        ],
+        "same_seed": 524027160,
+        "x": -441.4514429123518,
+        "y": 684.5178244349423,
+        "w": 290.0,
+        "h": 150.0,
+        "kind": "imagegen.seed_switch",
+        "type": "imagegen",
+        "wires": [
+          {
+            "src_socket": "seed",
+            "dst_node_id": "imagegen.generate/c65a2c52dde0",
+            "dst_socket": "seed"
+          }
+        ]
+      },
+      "scene_x": -441.4514429123518,
+      "scene_y": 684.5178244349423
+    },
+    {
+      "kind": "imagegen",
+      "rec": {
+        "node_type": "imagegen.size",
+        "node_id": "imagegen.size/f09f38edd758",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "params",
+            "type": "gen_params"
+          }
+        ],
+        "collapsed": false,
+        "params": {
+          "width": 1024,
+          "height": 1024,
+          "steps": 5,
+          "cfg": 7.0,
+          "seed": -1,
+          "n": 3,
+          "scheduler": "dpmpp_2m_karras"
+        },
+        "x": -601.0,
+        "y": 219.0,
+        "w": 380.0,
+        "h": 400.0,
+        "kind": "imagegen.size",
+        "type": "imagegen",
+        "wires": [
+          {
+            "src_socket": "params",
+            "dst_node_id": "imagegen.generate/c65a2c52dde0",
+            "dst_socket": "params"
+          }
+        ]
+      },
+      "scene_x": -601.0,
+      "scene_y": 219.0
+    },
+    {
+      "kind": "imagegen",
+      "rec": {
+        "node_type": "imagegen.negative_prompt",
+        "node_id": "imagegen.negative_prompt/0d68f1bb02f3",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "text",
+            "type": "string"
+          }
+        ],
+        "collapsed": false,
+        "text": "grain, low quality, blown out color, floating fins, splashing, clear sky, duplicate text, multi-color text, bad text, mixed words, floating fins, flying fins, ba kerning on font. mixed letters, GO DICKY, GO, GOO DUUCKY, Birds, EOUCKY, flying fish, fins that fly GODUCKY, distorted text, bad logo, bad fonts, bad letters",
+        "autogrow_disabled": false,
+        "x": -559.0,
+        "y": -198.0,
+        "w": 320.0,
+        "h": 217.0,
+        "kind": "imagegen.negative_prompt",
+        "type": "imagegen",
+        "wires": [
+          {
+            "src_socket": "text",
+            "dst_node_id": "imagegen.generate/c65a2c52dde0",
+            "dst_socket": "negative"
+          }
+        ]
+      },
+      "scene_x": -559.0,
+      "scene_y": -198.0
+    },
+    {
+      "kind": "drawing",
+      "rec": {
+        "kind": "sticky",
+        "z": 50000.01,
+        "origin_x": 0.0,
+        "origin_y": 0.0,
+        "scale": 1.0,
+        "rotation": 0.0,
+        "scene_x": -1413.0873025709197,
+        "scene_y": -56.91987389929038,
+        "text": "Model used for this setup was FLUX 2 Klein 4B",
+        "color": "#b6b2ac",
+        "bg_color": "#443a2a",
+        "font_pt": 14.0,
+        "font_family": "Segoe UI",
+        "font_bold": false,
+        "font_italic": false,
+        "box_w": 464.1412976399612,
+        "box_h": 60.0,
+        "_tpl_src_nid": "8790f486-99a7-42d6-9a6a-69a516002c74"
+      }
+    },
+    {
+      "kind": "drawing",
+      "rec": {
+        "kind": "sticky",
+        "z": 50000.02,
+        "origin_x": 0.0,
+        "origin_y": 0.0,
+        "scale": 1.0,
+        "rotation": 0.0,
+        "scene_x": 875.1871385064278,
+        "scene_y": -325.4204506616501,
+        "text": "Contact sheets are good to see all your current generations.",
+        "color": "#c6c6c6",
+        "bg_color": "#402a30",
+        "font_pt": 14.0,
+        "font_family": "Segoe UI",
+        "font_bold": false,
+        "font_italic": false,
+        "box_w": 314.061384451873,
+        "box_h": 111.57744834490342,
+        "_tpl_src_nid": "ad5ccad8-c5db-40ed-8996-253645aff469"
+      }
+    },
+    {
+      "kind": "drawing",
+      "rec": {
+        "kind": "sticky",
+        "z": 50000.01,
+        "origin_x": 0.0,
+        "origin_y": 0.0,
+        "scale": 1.0,
+        "rotation": 0.0,
+        "scene_x": -1115.8572631204956,
+        "scene_y": 719.7228580483372,
+        "text": "Connecting Seed Switch overrides the seed value on the Size & Sampling node. You can switch the mode to random or iterations. Using the same seed helps maintain the image composition, allowing you to make further adjustments by tweaking your prompts.",
+        "color": "#b6b2ac",
+        "bg_color": "#3f3327",
+        "font_pt": 14.0,
+        "font_family": "Segoe UI",
+        "font_bold": false,
+        "font_italic": false,
+        "box_w": 484.1585290594686,
+        "box_h": 183.1059732299708,
+        "_tpl_src_nid": "6becdd1e-2a0e-4c84-ba57-a60e26404448"
+      }
+    },
+    {
+      "kind": "diagram_connector",
+      "data": {
+        "type": "diagram_connector",
+        "endpoints": [
+          {
+            "kind": "snap",
+            "snap_nid": "8790f486-99a7-42d6-9a6a-69a516002c74",
+            "side": "bottom",
+            "t": 0.534207161846938,
+            "x": -1165.0028686153335,
+            "y": 5.08012610070962
+          },
+          {
+            "kind": "snap",
+            "snap_nid": "17a805fe-a164-496b-ace1-b8684b7b9a94",
+            "side": "left",
+            "t": 0.4865292838573371,
+            "x": -1007.0,
+            "y": 115.00791751360737
+          }
+        ],
+        "markers": [
+          "circle",
+          "arrow"
+        ],
+        "line_style": "smooth",
+        "dash_style": "dotted_forward",
+        "stroke_color": "#838383",
+        "stroke_width": 1.8,
+        "mid_text": "",
+        "mid_text_color": "#e5e5e5",
+        "mid_font_pt": 11.0,
+        "mid_font_family": "Segoe UI",
+        "mid_font_bold": false,
+        "mid_font_italic": false
+      },
+      "scene_x": -1165.0028686153335,
+      "scene_y": 5.08012610070962
+    },
+    {
+      "kind": "diagram_connector",
+      "data": {
+        "type": "diagram_connector",
+        "endpoints": [
+          {
+            "kind": "snap",
+            "snap_nid": "6becdd1e-2a0e-4c84-ba57-a60e26404448",
+            "side": "right",
+            "t": 0.4594668035489319,
+            "x": -629.698734061027,
+            "y": 803.6918414932239
+          },
+          {
+            "kind": "snap",
+            "snap_nid": "1e4ed5a4-37ac-4e28-9fe2-aa2d9da9b839",
+            "side": "left",
+            "t": 0.5246402036861116,
+            "x": -453.4514429123518,
+            "y": 763.8052198763257
+          }
+        ],
+        "markers": [
+          "circle",
+          "arrow"
+        ],
+        "line_style": "smooth",
+        "dash_style": "dotted_forward",
+        "stroke_color": "#838383",
+        "stroke_width": 1.8,
+        "mid_text": "",
+        "mid_text_color": "#e5e5e5",
+        "mid_font_pt": 11.0,
+        "mid_font_family": "Segoe UI",
+        "mid_font_bold": false,
+        "mid_font_italic": false
+      },
+      "scene_x": -629.698734061027,
+      "scene_y": 763.8052198763257
+    },
+    {
+      "kind": "diagram_connector",
+      "data": {
+        "type": "diagram_connector",
+        "endpoints": [
+          {
+            "kind": "snap",
+            "snap_nid": "ad5ccad8-c5db-40ed-8996-253645aff469",
+            "side": "bottom",
+            "t": 0.4867371031449432,
+            "x": 1027.9994153968025,
+            "y": -211.84300231674666
+          },
+          {
+            "kind": "snap",
+            "snap_nid": "2c5fc328-c7c5-4e2e-a0b8-5ae6b6d93d4c",
+            "side": "top",
+            "t": 0.5140879469683968,
+            "x": 1116.1428333477334,
+            "y": -53.0
+          }
+        ],
+        "markers": [
+          "circle",
+          "arrow"
+        ],
+        "line_style": "smooth",
+        "dash_style": "dotted_forward",
+        "stroke_color": "#838383",
+        "stroke_width": 1.8,
+        "mid_text": "",
+        "mid_text_color": "#e5e5e5",
+        "mid_font_pt": 11.0,
+        "mid_font_family": "Segoe UI",
+        "mid_font_bold": false,
+        "mid_font_italic": false
+      },
+      "scene_x": 1027.9994153968025,
+      "scene_y": -211.84300231674666
+    }
+  ],
+  "id": "14a86aa55b0549de9ad42878e7ec950f",
+  "title": "Text to Image - Seed Switch",
+  "description": "Simple Text to Image template that uses a constant seed using Seed Switch.",
+  "strip_paths": true
+}
