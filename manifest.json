@@ -1,19 +1,30 @@
-﻿{
+{
   "schema": 1,
-  "updated": "2026-06-21T01:00:00Z",
+  "updated": "2026-06-21T18:11:38Z",
   "base_url": "https://raw.githubusercontent.com/jorgelega/reelmarkr-library/main/",
   "folders": [
-    { "id": "image-generation", "name": "Image Generation", "parent": null }
+    "Image Generation"
   ],
   "entries": [
     {
-      "id": "text-to-image-seed-switch",
-      "title": "Text to Image - Seed Switch",
-      "folder": "image-generation",
+      "id": "text-to-image-seed-switch-14a86aa5",
       "type": "prmic",
       "file": "files/Image Generation/text-to-image-seed-switch-14a86aa5.prmic",
-      "description": "Simple Text to Image template that uses a constant seed using Seed Switch.",
-      "published": "2026-06-21T00:26:55Z"
+      "folder": "Image Generation",
+      "thumb": "files/Image Generation/text-to-image-seed-switch-14a86aa5.png",
+      "title": "Text To Image Seed Switch",
+      "description": "",
+      "published": "2026-06-21"
+    },
+    {
+      "id": "text-to-image-working-with-prompt-switch-658940de",
+      "type": "prmic",
+      "file": "files/Image Generation/text-to-image-working-with-prompt-switch-658940de.prmic",
+      "folder": "Image Generation",
+      "thumb": "files/Image Generation/text-to-image-working-with-prompt-switch-658940de.png",
+      "title": "Text To Image Working With Prompt Switch",
+      "description": "",
+      "published": "2026-06-21"
     }
   ]
 }
