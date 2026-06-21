@@ -1,7 +1,19 @@
 ﻿{
   "schema": 1,
-  "updated": "2026-06-20T00:00:00Z",
+  "updated": "2026-06-21T01:00:00Z",
   "base_url": "https://raw.githubusercontent.com/jorgelega/reelmarkr-library/main/",
-  "folders": [],
-  "entries": []
+  "folders": [
+    { "id": "image-generation", "name": "Image Generation", "parent": null }
+  ],
+  "entries": [
+    {
+      "id": "text-to-image-seed-switch",
+      "title": "Text to Image - Seed Switch",
+      "folder": "image-generation",
+      "type": "prmic",
+      "file": "files/Image Generation/text-to-image-seed-switch-14a86aa5.prmic",
+      "description": "Simple Text to Image template that uses a constant seed using Seed Switch.",
+      "published": "2026-06-21T00:26:55Z"
+    }
+  ]
 }
