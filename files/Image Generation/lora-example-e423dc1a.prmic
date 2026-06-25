@@ -1,0 +1,457 @@
+{
+  "format": "reelmarkr.portable.canvas",
+  "kind": "prmic",
+  "version": 1,
+  "app": "ReelMarkr Immersion Canvas",
+  "created": "2026-06-25T02:27:42Z",
+  "anchor_x": -1262.0,
+  "anchor_y": 1721.0,
+  "items": [
+    {
+      "kind": "imagegen",
+      "rec": {
+        "node_type": "imagegen.prompt",
+        "node_id": "imagegen.prompt/62509263d257",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "text",
+            "type": "string"
+          }
+        ],
+        "collapsed": false,
+        "text": "",
+        "autogrow_disabled": true,
+        "x": -1262.0,
+        "y": 1721.0,
+        "w": 424.0,
+        "h": 360.0,
+        "kind": "imagegen.prompt",
+        "type": "imagegen",
+        "wires": [
+          {
+            "src_socket": "text",
+            "dst_node_id": "imagegen.generate/462f22ffde9c",
+            "dst_socket": "prompt"
+          }
+        ]
+      },
+      "scene_x": -1262.0,
+      "scene_y": 1721.0
+    },
+    {
+      "kind": "imagegen",
+      "rec": {
+        "node_type": "imagegen.lora",
+        "node_id": "imagegen.lora/dedc3cdb135f",
+        "inputs": [
+          {
+            "name": "model_in",
+            "type": "model_ref"
+          },
+          {
+            "name": "clip_in",
+            "type": "clip_ref"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "model",
+            "type": "model_ref"
+          },
+          {
+            "name": "clip",
+            "type": "clip_ref"
+          }
+        ],
+        "collapsed": false,
+        "lora_ref": "G:/HFModels/loras/F2K4B_BHMecha.safetensors",
+        "strength": 0.76,
+        "x": -87.0,
+        "y": 2787.0,
+        "w": 457.0,
+        "h": 220.0,
+        "kind": "imagegen.lora",
+        "type": "imagegen",
+        "wires": [
+          {
+            "src_socket": "model",
+            "dst_node_id": "imagegen.generate/462f22ffde9c",
+            "dst_socket": "model_ref"
+          },
+          {
+            "src_socket": "clip",
+            "dst_node_id": "imagegen.generate/462f22ffde9c",
+            "dst_socket": "clip_ref"
+          }
+        ]
+      },
+      "scene_x": -87.0,
+      "scene_y": 2787.0
+    },
+    {
+      "kind": "imagegen",
+      "rec": {
+        "node_type": "imagegen.contact_sheet",
+        "node_id": "imagegen.contact_sheet/3ea9c7fd53e1",
+        "inputs": [
+          {
+            "name": "generator",
+            "type": "image_path"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "set",
+            "type": "image_path"
+          }
+        ],
+        "collapsed": false,
+        "thumb_size": 490,
+        "output_index": 0,
+        "x": 1289.0,
+        "y": 2129.0,
+        "w": 609.0,
+        "h": 823.0,
+        "kind": "imagegen.contact_sheet",
+        "type": "imagegen"
+      },
+      "scene_x": 1289.0,
+      "scene_y": 2129.0
+    },
+    {
+      "kind": "imagegen",
+      "rec": {
+        "node_type": "imagegen.negative_prompt",
+        "node_id": "imagegen.negative_prompt/0d9fc4942a75",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "text",
+            "type": "string"
+          }
+        ],
+        "collapsed": false,
+        "text": "logos, watermark, ",
+        "autogrow_disabled": true,
+        "x": -796.0,
+        "y": 1814.0,
+        "w": 437.0,
+        "h": 243.0,
+        "kind": "imagegen.negative_prompt",
+        "type": "imagegen",
+        "wires": [
+          {
+            "src_socket": "text",
+            "dst_node_id": "imagegen.generate/462f22ffde9c",
+            "dst_socket": "negative"
+          }
+        ]
+      },
+      "scene_x": -796.0,
+      "scene_y": 1814.0
+    },
+    {
+      "kind": "imagegen",
+      "rec": {
+        "node_type": "imagegen.size",
+        "node_id": "imagegen.size/c9c2ba20c90d",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "params",
+            "type": "gen_params"
+          }
+        ],
+        "collapsed": false,
+        "params": {
+          "width": 1024,
+          "height": 1024,
+          "steps": 20,
+          "cfg": 7.0,
+          "seed": -1,
+          "n": 4,
+          "scheduler": "dpmpp_2m_karras"
+        },
+        "x": -375.13294839476487,
+        "y": 2141.896909829234,
+        "w": 380.0,
+        "h": 400.0,
+        "kind": "imagegen.size",
+        "type": "imagegen",
+        "wires": [
+          {
+            "src_socket": "params",
+            "dst_node_id": "imagegen.generate/462f22ffde9c",
+            "dst_socket": "params"
+          }
+        ]
+      },
+      "scene_x": -375.13294839476487,
+      "scene_y": 2141.896909829234
+    },
+    {
+      "kind": "imagegen",
+      "rec": {
+        "node_type": "imagegen.generate",
+        "node_id": "imagegen.generate/462f22ffde9c",
+        "inputs": [
+          {
+            "name": "prompt",
+            "type": "string"
+          },
+          {
+            "name": "negative",
+            "type": "string"
+          },
+          {
+            "name": "model",
+            "type": "model_id"
+          },
+          {
+            "name": "params",
+            "type": "gen_params"
+          },
+          {
+            "name": "seed",
+            "type": "seed"
+          },
+          {
+            "name": "model_ref",
+            "type": "model_ref"
+          },
+          {
+            "name": "clip_ref",
+            "type": "clip_ref"
+          },
+          {
+            "name": "vae_ref",
+            "type": "vae_ref"
+          },
+          {
+            "name": "reference",
+            "type": "reference_image"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "image",
+            "type": "image_path"
+          }
+        ],
+        "collapsed": false,
+        "last_image_path": "",
+        "use_api": false,
+        "x": 552.4596965348773,
+        "y": 2012.1521096600234,
+        "w": 520.0,
+        "h": 620.0,
+        "kind": "imagegen.generate",
+        "type": "imagegen",
+        "wires": [
+          {
+            "src_socket": "image",
+            "dst_node_id": "imagegen.contact_sheet/3ea9c7fd53e1",
+            "dst_socket": "generator"
+          }
+        ]
+      },
+      "scene_x": 552.4596965348773,
+      "scene_y": 2012.1521096600234
+    },
+    {
+      "kind": "imagegen",
+      "rec": {
+        "node_type": "imagegen.advanced_model",
+        "node_id": "imagegen.advanced_model/090c1182b927",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "model",
+            "type": "model_ref"
+          },
+          {
+            "name": "clip",
+            "type": "clip_ref"
+          },
+          {
+            "name": "vae",
+            "type": "vae_ref"
+          }
+        ],
+        "collapsed": false,
+        "model_ref": "black-forest-labs/FLUX.2-klein-base-4B",
+        "vae_ref": "",
+        "clip_ref": "",
+        "quantization": "",
+        "x": -1070.9326786584334,
+        "y": 2633.3604102018085,
+        "w": 658.0,
+        "h": 280.0,
+        "kind": "imagegen.advanced_model",
+        "type": "imagegen",
+        "wires": [
+          {
+            "src_socket": "model",
+            "dst_node_id": "imagegen.lora/dedc3cdb135f",
+            "dst_socket": "model_in"
+          },
+          {
+            "src_socket": "clip",
+            "dst_node_id": "imagegen.lora/dedc3cdb135f",
+            "dst_socket": "clip_in"
+          },
+          {
+            "src_socket": "vae",
+            "dst_node_id": "imagegen.generate/462f22ffde9c",
+            "dst_socket": "vae_ref"
+          }
+        ]
+      },
+      "scene_x": -1070.9326786584334,
+      "scene_y": 2633.3604102018085
+    },
+    {
+      "kind": "web",
+      "url": "https://civitai.com/models/2418937/infl8-klein-edit-klein-4bbase-4b?modelVersionId=2719562",
+      "is_instance": false,
+      "scene_x": -520.2236929689257,
+      "scene_y": 3208.5122583079706,
+      "width": 320,
+      "height": 80,
+      "bg_color": "#64267c",
+      "_tpl_src_nid": "37378627-1cf0-4f2d-b277-4851f21f3af4"
+    },
+    {
+      "kind": "web",
+      "url": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+      "is_instance": false,
+      "scene_x": -526.1253565027572,
+      "scene_y": 3347.534545710582,
+      "width": 320,
+      "height": 80,
+      "bg_color": "#121a8a",
+      "_tpl_src_nid": "ec9d2fe8-d276-4549-bf30-f209840eb158"
+    },
+    {
+      "kind": "diagram_connector",
+      "data": {
+        "type": "diagram_connector",
+        "endpoints": [
+          {
+            "kind": "snap",
+            "snap_nid": "37378627-1cf0-4f2d-b277-4851f21f3af4",
+            "side": "right",
+            "t": 0.5473561539907,
+            "x": -179.22369296892566,
+            "y": 3254.289709094836
+          },
+          {
+            "kind": "snap",
+            "snap_nid": "438c4c0f-3ffa-478d-934e-79b898d9b408",
+            "side": "bottom",
+            "t": 0.39430631268856114,
+            "x": 88.758850031592,
+            "y": 3028.0
+          }
+        ],
+        "markers": [
+          "circle",
+          "arrow"
+        ],
+        "line_style": "smooth",
+        "dash_style": "solid",
+        "stroke_color": "#64267c",
+        "stroke_width": 1.8,
+        "mid_text": "",
+        "mid_text_color": "#e5e5e5",
+        "mid_font_pt": 11.0,
+        "mid_font_family": "Segoe UI",
+        "mid_font_bold": false,
+        "mid_font_italic": false
+      },
+      "scene_x": -179.22369296892566,
+      "scene_y": 3028.0
+    },
+    {
+      "kind": "diagram_connector",
+      "data": {
+        "type": "diagram_connector",
+        "endpoints": [
+          {
+            "kind": "snap",
+            "snap_nid": "ec9d2fe8-d276-4549-bf30-f209840eb158",
+            "side": "left",
+            "t": 0.3945529707649461,
+            "x": -547.1253565027572,
+            "y": 3374.6700081439053
+          },
+          {
+            "kind": "snap",
+            "snap_nid": "23ecfe99-815e-4775-b28e-e8808fd85880",
+            "side": "bottom",
+            "t": 0.4640029087308335,
+            "x": -767.1306425468499,
+            "y": 2934.3604102018085
+          }
+        ],
+        "markers": [
+          "circle",
+          "arrow"
+        ],
+        "line_style": "smooth",
+        "dash_style": "solid",
+        "stroke_color": "#2131c6",
+        "stroke_width": 1.8,
+        "mid_text": "",
+        "mid_text_color": "#e5e5e5",
+        "mid_font_pt": 11.0,
+        "mid_font_family": "Segoe UI",
+        "mid_font_bold": false,
+        "mid_font_italic": false
+      },
+      "scene_x": -767.1306425468499,
+      "scene_y": 2934.3604102018085
+    }
+  ],
+  "network_boxes": [
+    {
+      "nid": "34fb699e-a0bc-4eec-a577-966ed70a1850",
+      "scene_x": -573.3870692043423,
+      "scene_y": 3120.450238308385,
+      "width": 425.0045180364734,
+      "height": 369.9160790419851,
+      "label": "Examples",
+      "label_pt": 6.0,
+      "fill": [
+        0,
+        0,
+        0,
+        51
+      ],
+      "border": [
+        0,
+        0,
+        0,
+        131
+      ],
+      "text": [
+        181,
+        181,
+        181,
+        255
+      ],
+      "collapsed": false,
+      "chrome_visible": true,
+      "text_visible": true,
+      "box_member_nids": [
+        "37378627-1cf0-4f2d-b277-4851f21f3af4",
+        "ec9d2fe8-d276-4549-bf30-f209840eb158"
+      ]
+    }
+  ],
+  "id": "e423dc1ac8da44b69a95b6be1048c98a",
+  "title": "LoRA Example",
+  "description": "This example file shows a basic setup for working with LoRAs. Use the slider on the LoRA node to control how much influence the LoRA has on the final result.\n\nWhen using LoRAs, keep in mind that some may require specific trigger words to work properly. Make sure to note any trigger words when you download a new LoRA.\n\nAlso remember that LoRAs are usually trained for a specific base checkpoint model, so it is important to use the correct checkpoint that matches or is compatible with the LoRA.",
+  "strip_paths": true
+}
