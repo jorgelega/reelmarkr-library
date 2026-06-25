@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated": "2026-06-21T18:24:44Z",
+  "updated": "2026-06-25T01:47:42Z",
   "base_url": "https://raw.githubusercontent.com/jorgelega/reelmarkr-library/main/",
   "folders": [
     {
@@ -9,6 +9,16 @@
     }
   ],
   "entries": [
+    {
+      "id": "lora-example-34194762",
+      "type": "prmic",
+      "file": "files/Image Generation/lora-example-34194762.prmic",
+      "folder": "Image Generation",
+      "thumb": "files/Image Generation/lora-example-34194762.png",
+      "title": "Lora Example",
+      "description": "",
+      "published": "2026-06-24"
+    },
     {
       "id": "text-to-image-seed-switch-14a86aa5",
       "type": "prmic",
